@@ -41,6 +41,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         if error == nil {
             print("Login complete.")
+            loginButton.hidden = true
             self.performSegueWithIdentifier("unwindLoginSegue", sender: self)
         }
         else {
