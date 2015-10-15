@@ -38,6 +38,9 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadingView.frame = view.frame
+        UIApplication.sharedApplication().keyWindow?.addSubview(loadingView)
+        
         checkUPCCodesApiForMatchingCode()
     }
     
@@ -45,6 +48,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         
         loadingView.hidden = false
         loadingActivityIndicator.startAnimating()
+        
         let container = CKContainer.defaultContainer()
         let publicData = container.publicCloudDatabase
         

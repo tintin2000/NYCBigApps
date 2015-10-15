@@ -53,6 +53,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         torchButton.layer.shadowColor = UIColor.whiteColor().CGColor
         
         loadingView.hidden = true
+        loadingView.frame = view.frame
+        UIApplication.sharedApplication().keyWindow?.addSubview(loadingView)
+        
 
         self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
