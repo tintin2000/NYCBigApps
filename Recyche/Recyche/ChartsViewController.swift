@@ -11,11 +11,14 @@ import CoreData
 import Charts
 
 
-class ChartsViewController: UIViewController {
+class ChartsViewController: UIViewController  {
     
     var products: [Product]!
 
     @IBOutlet weak var pieChartView: PieChartView!
+
+    
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,7 +30,33 @@ class ChartsViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 17)!]
+        
+        }
+    
+    
+    
+ 
+    
+    
+    
+    @IBAction func shareCharts(sender: UIBarButtonItem) {
+        
+        let image  = UIImage()
+        let ImageFormat = UIImageJPEGRepresentation(image, 0.9)
+        
+        var pieChartImage = pieChartView.saveToPath(path: String, format: ChartViewBase.ImageFormat, compressionQuality: Double)
+        
+
+        let activityItems = pieChartImage
+        
+        let activityController = UIActivityViewController(activityItems:
+            activityItems!, applicationActivities: nil)
+        self.presentViewController(activityController, animated: true,
+            completion: nil)
+        
     }
+    
+    
     
     @IBAction func segmentControlChanged(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -127,6 +156,9 @@ class ChartsViewController: UIViewController {
     }
     
 
+    
+    
+    
 
     // MARK: - Navigation
 
