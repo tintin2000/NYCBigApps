@@ -41,16 +41,13 @@ class ChartsViewController: UIViewController  {
     
     @IBAction func shareCharts(sender: UIBarButtonItem) {
         
-        let image  = UIImage()
-        let ImageFormat = UIImageJPEGRepresentation(image, 0.9)
+       
         
-        var pieChartImage = pieChartView.saveToPath(path: String, format: ChartViewBase.ImageFormat, compressionQuality: Double)
         
-
-        let activityItems = pieChartImage
+        let image = pieChartView.getChartImage(transparent:true)
         
         let activityController = UIActivityViewController(activityItems:
-            activityItems!, applicationActivities: nil)
+            ["My Recyling Chart for Recyche", image], applicationActivities: nil)
         self.presentViewController(activityController, animated: true,
             completion: nil)
         
