@@ -48,6 +48,10 @@ class ChartsViewController: UIViewController  {
         
         let activityController = UIActivityViewController(activityItems:
             ["My Recyling Chart from Recyche", image], applicationActivities: nil)
+    
+        
+        
+        
         self.presentViewController(activityController, animated: true,
             completion: nil)
         
