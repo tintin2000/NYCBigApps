@@ -467,7 +467,13 @@
                             <constraint firstItem="aIb-Ae-Fij" firstAttribute="leading" secondItem="GJh-l7-7zh" secondAttribute="leadingMargin" id="oPu-oi-zJb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Stats" id="glS-Ak-S1b"/>
+                    <navigationItem key="navigationItem" title="Stats" id="glS-Ak-S1b">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="wzf-jj-qwC">
+                            <connections>
+                                <action selector="shareCharts:" destination="cET-ym-v4x" id="hbV-go-GaF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="pieChartView" destination="9mb-7f-q93" id="2UM-bF-Szt"/>
                     </connections>
