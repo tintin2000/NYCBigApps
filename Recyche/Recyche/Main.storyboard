@@ -116,6 +116,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Scanner" id="M1B-uq-doa">
                         <barButtonItem key="backBarButtonItem" title="Scanner" id="pdW-Ws-yis"/>
+                        <barButtonItem key="rightBarButtonItem" image="User Male" id="3fa-Pu-f0V">
+                            <connections>
+                                <segue destination="j5d-wh-yka" kind="push" id="tH4-SU-bLO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="instructionBanner" destination="a8K-Iv-lN7" id="ltO-WR-MKL"/>
@@ -635,15 +640,26 @@
             </objects>
             <point key="canvasLocation" x="1131" y="1181"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="d9B-TS-4Mz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="j5d-wh-yka" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KiS-fb-lwv"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R2F-iW-ROF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1663" y="-310"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Greentech Filled" width="32" height="32"/>
         <image name="NoImage" width="500" height="500"/>
+        <image name="User Male" width="25" height="25"/>
         <image name="charticon" width="25" height="25"/>
         <image name="recychelogo" width="75" height="75"/>
         <image name="scannericon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4ul-7p-4qU"/>
+        <segue reference="m8x-lW-tSk"/>
     </inferredMetricsTieBreakers>
 </document>
