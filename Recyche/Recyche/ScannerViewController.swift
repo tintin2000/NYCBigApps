@@ -275,8 +275,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             qrCodeFrameView?.frame = barCodeObject.bounds;
             
             if metadataObj.stringValue != nil {
-                loadingView.hidden = false
-                loadingIndicator.startAnimating()
+                print("Got it!")
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.loadingView.hidden = false
+                    self.loadingIndicator.startAnimating()
+                })
                 
                 captureSession?.stopRunning()
                 
