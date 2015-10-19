@@ -200,9 +200,12 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     @IBAction func dismissInstructions(sender: AnyObject) {
-        UIView.animateWithDuration(0.5, animations: {
+        
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
             self.instructionsView.transform = CGAffineTransformIdentity
-        })
+            }) { (complete) -> Void in
+                self.instructionsView.removeFromSuperview()
+        }
     }
     
     // MARK: - Class Functions
