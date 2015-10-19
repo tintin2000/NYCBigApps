@@ -155,6 +155,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     @IBAction func toAddProduct(sender: AnyObject) {
+        print("fuck")
+        loadingView.hidden = false
+        loadingIndicator.startAnimating()
         lastCapturedCode = "\(arc4random_uniform(892357235))"
         databaseCheck(lastCapturedCode!)
     }
@@ -184,12 +187,22 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     @IBAction func showInstructions(sender: AnyObject) {
-        instructionsView.center = view.center
+        instructionsView.center = CGPoint(x: view.center.x, y: view.center.y - 64 - view.bounds.height)
         instructionsView.layer.shadowColor = UIColor.blackColor().CGColor
         instructionsView.layer.shadowOffset = CGSize(width: 0, height: 0)
         instructionsView.layer.shadowRadius = 20
         instructionsView.layer.shadowOpacity = 1.0
         view.addSubview(instructionsView)
+        
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: ({
+            self.instructionsView.transform = CGAffineTransformMakeTranslation(0, self.view.bounds.height)
+            }), completion: nil)
+    }
+    
+    @IBAction func dismissInstructions(sender: AnyObject) {
+        UIView.animateWithDuration(0.5, animations: {
+            self.instructionsView.transform = CGAffineTransformIdentity
+        })
     }
     
     // MARK: - Class Functions
