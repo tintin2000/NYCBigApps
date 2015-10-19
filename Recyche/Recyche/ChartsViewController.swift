@@ -83,6 +83,7 @@ class ChartsViewController: UIViewController  {
         var chartData: [(code: String, amount: Int)] = []
         
         let calendar = NSCalendar.currentCalendar()
+        calendar.firstWeekday = 2
         let today = calendar.component(unit, fromDate: NSDate())
         
         for product in products { // Iterate over products in local database

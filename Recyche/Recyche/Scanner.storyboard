@@ -116,6 +116,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Scanner" id="M1B-uq-doa">
                         <barButtonItem key="backBarButtonItem" title="Scanner" id="pdW-Ws-yis"/>
+                        <barButtonItem key="leftBarButtonItem" image="helpicon" id="t8d-x6-itL">
+                            <connections>
+                                <action selector="showInstructions:" destination="giw-fh-jhR" id="NXS-3p-9gl"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="User Male" id="3fa-Pu-f0V">
                             <connections>
                                 <segue destination="j5d-wh-yka" kind="push" id="tH4-SU-bLO"/>
@@ -124,6 +129,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="instructionBanner" destination="a8K-Iv-lN7" id="ltO-WR-MKL"/>
+                        <outlet property="instructionsView" destination="QYA-M1-sWg" id="Rga-9N-TDZ"/>
                         <outlet property="loadingIndicator" destination="3zx-f6-bUv" id="7Xx-GX-OZW"/>
                         <outlet property="loadingView" destination="ehg-fN-8ZP" id="GDo-Su-ElN"/>
                         <outlet property="torchButton" destination="cpJ-PL-VcQ" id="VJI-1Q-a0H"/>
@@ -134,10 +140,81 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ek-KO-uM4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view alpha="0.64999997615814209" contentMode="scaleToFill" id="ehg-fN-8ZP" userLabel="Loading View">
+                <view contentMode="scaleToFill" id="QYA-M1-sWg" userLabel="Instructions View">
+                    <rect key="frame" x="0.0" y="0.0" width="220" height="263"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Find the barcode on the product" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60R-OL-O1v">
+                            <rect key="frame" x="8" y="8" width="204" height="41"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                            <color key="textColor" red="0.08235294118" green="0.47058823529999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Barcode example:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qL-c5-EKa">
+                            <rect key="frame" x="8" y="57" width="204" height="16.5"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                            <color key="textColor" red="0.08235294118" green="0.47058823529999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barcode" translatesAutoresizingMaskIntoConstraints="NO" id="rW9-PH-vGt">
+                            <rect key="frame" x="66" y="73.5" width="87" height="64"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="87" id="C5e-eT-KnW"/>
+                                <constraint firstAttribute="height" constant="64" id="G5g-q6-3s5"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Point the phone camera at the code from a short distance (3&quot;)." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6a-Ta-83m">
+                            <rect key="frame" x="8" y="144.5" width="204" height="61.5"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                            <color key="textColor" red="0.08235294118" green="0.47058823529999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. Wait until a green line/box appears over the code." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bed-2B-NMq">
+                            <rect key="frame" x="8" y="214" width="204" height="41"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                            <color key="textColor" red="0.08235294118" green="0.47058823529999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" red="0.95294117649999999" green="0.96862745100000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="0qL-c5-EKa" firstAttribute="leading" secondItem="QYA-M1-sWg" secondAttribute="leading" constant="8" id="7PQ-sI-d9f"/>
+                        <constraint firstItem="60R-OL-O1v" firstAttribute="top" secondItem="QYA-M1-sWg" secondAttribute="top" constant="8" id="CZX-aL-jyo"/>
+                        <constraint firstAttribute="trailing" secondItem="0qL-c5-EKa" secondAttribute="trailing" constant="8" id="FcM-NQ-EhI"/>
+                        <constraint firstItem="bed-2B-NMq" firstAttribute="leading" secondItem="QYA-M1-sWg" secondAttribute="leading" constant="8" id="J8T-EE-Fee"/>
+                        <constraint firstItem="0qL-c5-EKa" firstAttribute="top" secondItem="60R-OL-O1v" secondAttribute="bottom" constant="8" id="LvN-sh-QA4"/>
+                        <constraint firstItem="60R-OL-O1v" firstAttribute="leading" secondItem="QYA-M1-sWg" secondAttribute="leading" constant="8" id="SYK-TF-zv3"/>
+                        <constraint firstItem="rW9-PH-vGt" firstAttribute="top" secondItem="0qL-c5-EKa" secondAttribute="bottom" id="ZYI-fN-Cte"/>
+                        <constraint firstItem="bed-2B-NMq" firstAttribute="top" secondItem="K6a-Ta-83m" secondAttribute="bottom" constant="8" id="aWj-21-j5X"/>
+                        <constraint firstItem="rW9-PH-vGt" firstAttribute="centerX" secondItem="QYA-M1-sWg" secondAttribute="centerX" id="crP-HQ-OpF"/>
+                        <constraint firstAttribute="bottom" secondItem="bed-2B-NMq" secondAttribute="bottom" constant="8" id="ecX-zk-Uhl"/>
+                        <constraint firstAttribute="trailing" secondItem="60R-OL-O1v" secondAttribute="trailing" constant="8" id="imN-dU-yZS"/>
+                        <constraint firstAttribute="trailing" secondItem="K6a-Ta-83m" secondAttribute="trailing" constant="8" id="jMB-gl-EET"/>
+                        <constraint firstAttribute="trailing" secondItem="bed-2B-NMq" secondAttribute="trailing" constant="8" id="klb-Vx-5f6"/>
+                        <constraint firstItem="K6a-Ta-83m" firstAttribute="leading" secondItem="QYA-M1-sWg" secondAttribute="leading" constant="8" id="v5A-nG-KDm"/>
+                        <constraint firstItem="K6a-Ta-83m" firstAttribute="top" secondItem="rW9-PH-vGt" secondAttribute="bottom" constant="7.5" id="wrx-X3-sjA"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="ehg-fN-8ZP" userLabel="Loading View">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqH-Cg-SjK">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ihx-Iv-axJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <animations/>
+                            </view>
+                            <animations/>
+                            <blurEffect style="dark"/>
+                        </visualEffectView>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="3zx-f6-bUv">
                             <rect key="frame" x="141" y="195" width="37" height="37"/>
                             <animations/>
@@ -151,10 +228,14 @@
                         </label>
                     </subviews>
                     <animations/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="tqH-Cg-SjK" firstAttribute="leading" secondItem="ehg-fN-8ZP" secondAttribute="leading" id="1WB-AZ-Ljr"/>
+                        <constraint firstItem="tqH-Cg-SjK" firstAttribute="top" secondItem="ehg-fN-8ZP" secondAttribute="top" id="A3A-LY-NnC"/>
+                        <constraint firstAttribute="trailing" secondItem="tqH-Cg-SjK" secondAttribute="trailing" id="EQb-Bl-Zov"/>
                         <constraint firstItem="B2t-sZ-0mJ" firstAttribute="centerX" secondItem="ehg-fN-8ZP" secondAttribute="centerX" id="O6z-NV-2l8"/>
                         <constraint firstItem="3zx-f6-bUv" firstAttribute="centerY" secondItem="ehg-fN-8ZP" secondAttribute="centerY" constant="-14" id="cKq-qb-hn2"/>
+                        <constraint firstAttribute="bottom" secondItem="tqH-Cg-SjK" secondAttribute="bottom" id="gCK-Yk-abN"/>
                         <constraint firstItem="B2t-sZ-0mJ" firstAttribute="top" secondItem="3zx-f6-bUv" secondAttribute="bottom" constant="8" id="iAc-kH-7UZ"/>
                         <constraint firstItem="3zx-f6-bUv" firstAttribute="centerX" secondItem="ehg-fN-8ZP" secondAttribute="centerX" id="uD3-cJ-jZb"/>
                     </constraints>
@@ -266,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFT-aG-ReP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2587" y="1116"/>
+            <point key="canvasLocation" x="2587" y="1666"/>
         </scene>
         <!--Add Product-->
         <scene sceneID="EfU-gg-9oX">
@@ -370,6 +451,35 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3PD-Lu-Wna" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="2rv-VI-Ocf">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="452"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4a-3v-47a">
+                            <rect key="frame" x="8" y="8" width="224" height="436"/>
+                            <animations/>
+                            <mutableString key="text">Not every product is currently in Recycle database. We are asking users to help build 
+our product Recylcing Database.
+
+1.A user will simply scroll thru a list of various material and after picking the right one the product is added to our database and the user can see the correct Recycling information.
+
+2. A user will then choose the correct product material and press the “Add Product To Recyche Database” button.
+
+3. For plastic material Every plastic container or bottle has a recycling symbol. The symbol is a number, ranging from 1 to 7, inside a triangle. </mutableString>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailingMargin" secondItem="z4a-3v-47a" secondAttribute="trailing" id="7O2-Fh-bl5"/>
+                        <constraint firstItem="z4a-3v-47a" firstAttribute="top" secondItem="2rv-VI-Ocf" secondAttribute="topMargin" id="HLl-RA-P66"/>
+                        <constraint firstAttribute="bottomMargin" secondItem="z4a-3v-47a" secondAttribute="bottom" id="Url-XB-9Nd"/>
+                        <constraint firstItem="z4a-3v-47a" firstAttribute="leading" secondItem="2rv-VI-Ocf" secondAttribute="leadingMargin" id="YIc-MA-Mau"/>
+                    </constraints>
+                </view>
                 <view alpha="0.65000000000000002" contentMode="scaleToFill" id="VkV-JP-Mps">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -396,7 +506,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2587" y="402"/>
+            <point key="canvasLocation" x="2587" y="818"/>
         </scene>
         <!--Scanner-->
         <scene sceneID="Jj7-lv-Ky2">
@@ -438,10 +548,12 @@
         <image name="Greentech Filled" width="32" height="32"/>
         <image name="NoImage" width="500" height="500"/>
         <image name="User Male" width="25" height="25"/>
+        <image name="barcode" width="87" height="64"/>
+        <image name="helpicon" width="22" height="22"/>
         <image name="recychelogo" width="75" height="75"/>
         <image name="scannericon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4ul-7p-4qU"/>
+        <segue reference="m8x-lW-tSk"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -27,6 +27,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var torchButton: UIButton!
+    @IBOutlet var instructionsView: UIView!
     
     private var allowedTypes = [AVMetadataObjectTypeUPCECode,
         AVMetadataObjectTypeCode39Code,
@@ -181,6 +182,16 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         }
 
     }
+    
+    @IBAction func showInstructions(sender: AnyObject) {
+        instructionsView.center = view.center
+        instructionsView.layer.shadowColor = UIColor.blackColor().CGColor
+        instructionsView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        instructionsView.layer.shadowRadius = 20
+        instructionsView.layer.shadowOpacity = 1.0
+        view.addSubview(instructionsView)
+    }
+    
     // MARK: - Class Functions
     
     func databaseCheck(upc: String) {
