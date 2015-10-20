@@ -21,6 +21,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var lastCapturedCode:String?
     var scannedProduct: CKRecord!
     var barcodeScanned:((String) ->())?
+    var firstTimeCheck = false
     
     @IBOutlet weak var videoView:UIView!
     @IBOutlet weak var instructionBanner: UILabel!
@@ -45,6 +46,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         tabBarController?.tabBar.tintColor = colorWithHexString("15783D")
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 17)!]
         
@@ -58,45 +60,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         UIApplication.sharedApplication().keyWindow?.addSubview(loadingView)
         
 
-        self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        
-        var error:NSError?
-        let input : AnyObject!
-        do {
-            input = try AVCaptureDeviceInput(device: captureDevice)
-        }
-        catch let error1 as NSError {
-            error = error1
-            input = nil
-        }
-        if (error != nil) {
-            print("\(error?.localizedDescription)")
-            return
-        }
-        
-        captureSession = AVCaptureSession()
-        captureSession?.addInput(input as! AVCaptureInput)
-        
-        let captureMetadataOutput = AVCaptureMetadataOutput()
-        captureSession?.addOutput(captureMetadataOutput)
-        
-        captureMetadataOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
-        captureMetadataOutput.metadataObjectTypes = self.allowedTypes
-        
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer?.videoGravity = AVLayerVideoGravityResize
-        videoPreviewLayer?.frame = videoView.layer.bounds
-        videoView.layer.insertSublayer(videoPreviewLayer!, below: instructionBanner.layer)
-        videoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "restartScanner"))
-        
-        captureSession?.startRunning()
-        qrCodeFrameView = UIView()
-        qrCodeFrameView?.layer.borderColor = UIColor.greenColor().CGColor
-        qrCodeFrameView?.layer.borderWidth = 3
-        qrCodeFrameView?.autoresizingMask = [UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleRightMargin]
-        
-        view.addSubview(qrCodeFrameView!)
-        view.bringSubviewToFront(qrCodeFrameView!)
         
     }
     
@@ -117,6 +80,14 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         }
         else {
             // Need some error notification
+        }
+        
+        if firstTimeCheck {
+            if !didFinishLaunchingOnce() {
+                showInstructions(self)
+                print("Yeah")
+            }
+            firstTimeCheck = false
         }
     }
 
@@ -210,6 +181,49 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     // MARK: - Class Functions
     
+    func setupScanner() {
+        self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        
+        var error:NSError?
+        let input : AnyObject!
+        do {
+            input = try AVCaptureDeviceInput(device: captureDevice)
+        }
+        catch let error1 as NSError {
+            error = error1
+            input = nil
+        }
+        if (error != nil) {
+            print("\(error?.localizedDescription)")
+            return
+        }
+        
+        captureSession = AVCaptureSession()
+        captureSession?.addInput(input as! AVCaptureInput)
+        
+        let captureMetadataOutput = AVCaptureMetadataOutput()
+        captureSession?.addOutput(captureMetadataOutput)
+        
+        captureMetadataOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
+        captureMetadataOutput.metadataObjectTypes = self.allowedTypes
+        
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        videoPreviewLayer?.videoGravity = AVLayerVideoGravityResize
+        videoPreviewLayer?.frame = videoView.layer.bounds
+        videoView.layer.insertSublayer(videoPreviewLayer!, below: instructionBanner.layer)
+        videoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "restartScanner"))
+        
+        captureSession?.startRunning()
+        qrCodeFrameView = UIView()
+        qrCodeFrameView?.layer.borderColor = UIColor.greenColor().CGColor
+        qrCodeFrameView?.layer.borderWidth = 3
+        qrCodeFrameView?.autoresizingMask = [UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleRightMargin]
+        
+        view.addSubview(qrCodeFrameView!)
+        view.bringSubviewToFront(qrCodeFrameView!)
+
+    }
+    
     func databaseCheck(upc: String) {
         
         let container = CKContainer.defaultContainer()
@@ -256,6 +270,18 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         videoPreviewLayer?.frame = videoView.layer.bounds
     }
     
+    func didFinishLaunchingOnce() -> Bool {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let _ = defaults.stringForKey("scannerHasBeenLaunchedBefore") {
+            return true
+        }
+        else {
+            defaults.setBool(true, forKey: "scannerHasBeenLaunchedBefore")
+            return false
+        }
+    }
+    
     // MARK: - AVCaptureOutput Delegate
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
@@ -296,7 +322,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func unwindViewController(segue: UIStoryboardSegue) { }
+    @IBAction func unwindViewController(segue: UIStoryboardSegue) {
+        firstTimeCheck = true
+        
+    }
 
     
     // MARK: - Navigation
@@ -311,7 +340,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             let productInfoViewController = segue.destinationViewController as! ProductInfoViewController
             productInfoViewController.scannedProduct = scannedProduct
         }
-        
     }
 
 }
