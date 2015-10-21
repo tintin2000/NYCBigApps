@@ -19,6 +19,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     @IBOutlet weak var addProductToDatabaseButton: UIButton!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet var instructionsView: UIView!
 
     let naMessage = "The Product information is not in our database. Please 'SELECT PRODUCT MATERIAL' below and add it."
     var scannedUPC: String!
@@ -26,6 +27,8 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     var newProduct: CKRecord!
     var name: String?
     var imageURL: String?
+    
+    // MARK: - UIViewController Stuff
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,6 +46,16 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         
         checkUPCCodesApiForMatchingCode()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !didFinishLaunchingOnce() {
+            showInstructions(self)
+        }
+    }
+    
+    // MARK: - Actions
     
     @IBAction func addProductToDatabase(sender: AnyObject) {
         
@@ -91,6 +104,29 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         }
     }
     
+    @IBAction func showInstructions(sender: AnyObject) {
+        instructionsView.center = CGPoint(x: view.center.x, y: view.center.y - 64 - view.bounds.height)
+        instructionsView.layer.shadowColor = UIColor.blackColor().CGColor
+        instructionsView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        instructionsView.layer.shadowRadius = 20
+        instructionsView.layer.shadowOpacity = 1.0
+        view.addSubview(instructionsView)
+        
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: ({
+            self.instructionsView.transform = CGAffineTransformMakeTranslation(0, self.view.bounds.height)
+        }), completion: nil)
+    }
+    
+    @IBAction func hideInstructions(sender: AnyObject) {
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.instructionsView.transform = CGAffineTransformIdentity
+            }) { (complete) -> Void in
+                self.instructionsView.removeFromSuperview()
+        }
+    }
+    
+    // MARK: - Class Functions
+    
     func checkUPCCodesApiForMatchingCode() {
         Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": scannedUPC]).responseJSON { response in
             
@@ -123,10 +159,24 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         }
     }
     
+    func didFinishLaunchingOnce() -> Bool {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let _ = defaults.stringForKey("addHasBeenLaunchedBefore") {
+            return true
+        }
+        else {
+            defaults.setBool(true, forKey: "addHasBeenLaunchedBefore")
+            return false
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resour  ces that can be recreated.
     }
+    
+    // MARK: - UIPickerView Delegate
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -171,6 +221,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         productImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
     
+    // MARK: - Navigation
         
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "addToInfoSegue" {

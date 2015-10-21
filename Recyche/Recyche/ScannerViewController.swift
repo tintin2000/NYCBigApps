@@ -42,11 +42,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     // MARK: - UIViewController functions
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         tabBarController?.tabBar.tintColor = colorWithHexString("15783D")
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 17)!]
         
@@ -58,13 +56,12 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         loadingView.hidden = true
         loadingView.frame = view.frame
         UIApplication.sharedApplication().keyWindow?.addSubview(loadingView)
-        
-
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setupScanner()
         
         if captureSession != nil {
             restartScanner()
