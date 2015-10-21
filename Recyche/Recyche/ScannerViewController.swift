@@ -61,11 +61,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupScanner()
-        
         if captureSession != nil {
             restartScanner()
         }
+        
+        setupScanner()
     }
     
     
@@ -211,6 +211,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         videoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "restartScanner"))
         
         captureSession?.startRunning()
+        
         qrCodeFrameView = UIView()
         qrCodeFrameView?.layer.borderColor = UIColor.greenColor().CGColor
         qrCodeFrameView?.layer.borderWidth = 3
@@ -307,7 +308,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 
                 lastCapturedCode = metadataObj.stringValue
                 databaseCheck(metadataObj.stringValue)
-                
             }
         }
     }
