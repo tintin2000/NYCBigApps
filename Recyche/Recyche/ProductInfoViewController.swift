@@ -55,7 +55,7 @@ class ProductInfoViewController: UIViewController {
             productImageView.image = UIImage(contentsOfFile: imageAsset.fileURL.path!)
         }
         else {
-            productImageView.image = UIImage(named: "NoImage")
+            productImageView.image = UIImage(named: "\(scannedProduct.valueForKey("material") as! String)")
         }
     }
     

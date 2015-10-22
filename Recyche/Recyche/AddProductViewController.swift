@@ -22,6 +22,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     @IBOutlet var instructionsView: UIView!
 
     let naMessage = "The Product information is not in our database. Please 'SELECT PRODUCT MATERIAL' below and add it."
+    let naProduct = "Product Name Not Available"
     var scannedUPC: String!
     var material: String!
     var newProduct: CKRecord!
@@ -89,6 +90,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.loadingActivityIndicator.stopAnimating()
                     self.loadingView.hidden = true
+                    print(error)
                 })
             }
             else {
@@ -136,7 +138,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
                 if let _name = json["0"]["productname"].string {
                     print(_name)
                     if _name == " " {
-                        self.productNameLabel.text = self.naMessage
+                        self.productNameLabel.text = self.naProduct
                     }
                     else {
                         self.productNameLabel.text = _name
@@ -144,7 +146,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
                     }
                 }
                 else {
-                    self.productNameLabel.text = self.naMessage
+                    self.productNameLabel.text = self.naProduct
                 }
                 
                 if let _imageURL = json["0"]["imageurl"].string {

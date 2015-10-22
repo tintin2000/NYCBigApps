@@ -12,23 +12,23 @@
 		7CCEA01B1BADB48A00F6D423 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CCEA01A1BADB48A00F6D423 /* Assets.xcassets */; };
 		7CCEA01E1BADB48A00F6D423 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CCEA01C1BADB48A00F6D423 /* LaunchScreen.storyboard */; };
 		D32DACF01BE5F3F4AC707997 /* Pods_Recyche.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98569438C1359D2C195A1AD /* Pods_Recyche.framework */; };
-		FA0DC43D1BC31FDE00096FF8 /* Product+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DC43B1BC31FDE00096FF8 /* Product+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
-		FA0DC43E1BC31FDE00096FF8 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DC43C1BC31FDE00096FF8 /* Product.swift */; settings = {ASSET_TAGS = (); }; };
-		FA124BD71BD2A53700913142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA124BD61BD2A53700913142 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		FA124BF91BD3223300913142 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA124BF81BD3223300913142 /* Profile.storyboard */; settings = {ASSET_TAGS = (); }; };
-		FA124BFB1BD3484500913142 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA124BFA1BD3484500913142 /* ProfileTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		FA124C1B1BD3507400913142 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA124C1A1BD3507400913142 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		FA124C1E1BD35F8900913142 /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA124C1D1BD35F8900913142 /* Stats.storyboard */; settings = {ASSET_TAGS = (); }; };
-		FA124C201BD35FC500913142 /* Scanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA124C1F1BD35FC500913142 /* Scanner.storyboard */; settings = {ASSET_TAGS = (); }; };
-		FA1BAECB1BAF15C600D24788 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAECA1BAF15C600D24788 /* ScannerViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		FA1BAECD1BAF15FB00D24788 /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAECC1BAF15FB00D24788 /* ProductInfoViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		FA1BAECF1BAF160600D24788 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAECE1BAF160600D24788 /* AddProductViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		FA1BAED31BAF163400D24788 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED21BAF163400D24788 /* ChartsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		FA1BAED51BAF164B00D24788 /* ListOfProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		FA67C49D1BD7E054004FF66F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA67C49C1BD7E054004FF66F /* CloudKit.framework */; };
-		FABC01021BC6DE0800B3048A /* RecycleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABC01011BC6DE0800B3048A /* RecycleInformation.swift */; settings = {ASSET_TAGS = (); }; };
-		FABD2D821BCB37AB003C5464 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD2D811BCB37AA003C5464 /* ProductTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		FAE29D851BBB6412003325DA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE29D841BBB6412003325DA /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		FA0DC43D1BC31FDE00096FF8 /* Product+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DC43B1BC31FDE00096FF8 /* Product+CoreDataProperties.swift */; };
+		FA0DC43E1BC31FDE00096FF8 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DC43C1BC31FDE00096FF8 /* Product.swift */; };
+		FA124BD71BD2A53700913142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA124BD61BD2A53700913142 /* Main.storyboard */; };
+		FA124BF91BD3223300913142 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA124BF81BD3223300913142 /* Profile.storyboard */; };
+		FA124BFB1BD3484500913142 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA124BFA1BD3484500913142 /* ProfileTableViewController.swift */; };
+		FA124C1B1BD3507400913142 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA124C1A1BD3507400913142 /* ProfileViewController.swift */; };
+		FA124C1E1BD35F8900913142 /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA124C1D1BD35F8900913142 /* Stats.storyboard */; };
+		FA124C201BD35FC500913142 /* Scanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA124C1F1BD35FC500913142 /* Scanner.storyboard */; };
+		FA1BAECB1BAF15C600D24788 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAECA1BAF15C600D24788 /* ScannerViewController.swift */; };
+		FA1BAECD1BAF15FB00D24788 /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAECC1BAF15FB00D24788 /* ProductInfoViewController.swift */; };
+		FA1BAECF1BAF160600D24788 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAECE1BAF160600D24788 /* AddProductViewController.swift */; };
+		FA1BAED31BAF163400D24788 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED21BAF163400D24788 /* ChartsViewController.swift */; };
+		FA1BAED51BAF164B00D24788 /* ListOfProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */; };
+		FA65B85A1BD87510002E6312 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA65B8591BD87510002E6312 /* CloudKit.framework */; };
+		FABC01021BC6DE0800B3048A /* RecycleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABC01011BC6DE0800B3048A /* RecycleInformation.swift */; };
+		FABD2D821BCB37AB003C5464 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD2D811BCB37AA003C5464 /* ProductTableViewCell.swift */; };
+		FAE29D851BBB6412003325DA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE29D841BBB6412003325DA /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,7 +69,7 @@
 		FA1BAED21BAF163400D24788 /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfProductsViewController.swift; sourceTree = "<group>"; };
 		FA4184BA1BBED5EE00F70AA2 /* Recyche.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Recyche.entitlements; sourceTree = "<group>"; };
-		FA67C49C1BD7E054004FF66F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		FA65B8591BD87510002E6312 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FABC01011BC6DE0800B3048A /* RecycleInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecycleInformation.swift; sourceTree = "<group>"; };
 		FABD2D811BCB37AA003C5464 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		FAE29D841BBB6412003325DA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D32DACF01BE5F3F4AC707997 /* Pods_Recyche.framework in Frameworks */,
-				FA67C49D1BD7E054004FF66F /* CloudKit.framework in Frameworks */,
+				FA65B85A1BD87510002E6312 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +100,7 @@
 		0B8B1D01E3FB503623910908 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FA67C49C1BD7E054004FF66F /* CloudKit.framework */,
+				FA65B8591BD87510002E6312 /* CloudKit.framework */,
 				4EDDAC981BD020D90025C09B /* Social.framework */,
 				D98569438C1359D2C195A1AD /* Pods_Recyche.framework */,
 			);
