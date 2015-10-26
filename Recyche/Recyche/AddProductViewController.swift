@@ -47,7 +47,15 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         UIApplication.sharedApplication().keyWindow?.addSubview(loadingView)
         
         checkUPCCodesApiForMatchingCode()
+        
+      self.boxView.layer.borderWidth = 2
+     self.boxView.layer.borderColor = UIColor(red:0.08, green:0.47, blue:0.24, alpha:1.0).CGColor
+     
+        
     }
+    
+  
+    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
