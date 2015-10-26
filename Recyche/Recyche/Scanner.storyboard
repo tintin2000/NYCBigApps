@@ -407,26 +407,26 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" verticalCompressionResistancePriority="763" text="Product Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjQ-ep-30t">
-                                        <rect key="frame" x="103" y="165" width="99" height="21"/>
+                                        <rect key="frame" x="103" y="164" width="99" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="54o-ti-cnT">
-                                        <rect key="frame" x="0.0" y="190" width="304" height="51"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54o-ti-cnT">
+                                        <rect key="frame" x="0.0" y="188" width="304" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This Product is not in the Recyche Database" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiK-Cz-R2n">
                                                 <rect key="frame" x="8" y="10" width="288" height="14"/>
                                                 <animations/>
-                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="12"/>
                                                 <color key="textColor" red="0.070588235294117646" green="0.35686274509803922" blue="0.16078431372549021" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Help Us by choosing product material below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ve4-bQ-IBe">
                                                 <rect key="frame" x="8" y="27" width="288" height="15"/>
                                                 <animations/>
-                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="12"/>
                                                 <color key="textColor" red="0.070588235289999995" green="0.35686274509999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -443,8 +443,8 @@
                                             <constraint firstAttribute="trailing" secondItem="oiK-Cz-R2n" secondAttribute="trailing" constant="8" id="swz-TW-Rsk"/>
                                         </constraints>
                                     </view>
-                                    <pickerView contentMode="scaleToFill" verticalHuggingPriority="247" verticalCompressionResistancePriority="760" misplaced="YES" showsSelectionIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWv-2C-ckN">
-                                        <rect key="frame" x="0.0" y="246" width="304" height="147"/>
+                                    <pickerView contentMode="scaleToFill" verticalHuggingPriority="247" verticalCompressionResistancePriority="760" showsSelectionIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWv-2C-ckN">
+                                        <rect key="frame" x="0.0" y="247" width="304" height="147"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.95294117649999999" green="0.96862745100000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
