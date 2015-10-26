@@ -105,7 +105,7 @@ class ChartsViewController: UIViewController  {
                 }
             }
             else {
-                print("No item for this week/month/year")
+//                print("No item for this week/month/year")
             }
             
             var dataPoints: [String] = []

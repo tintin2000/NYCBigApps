@@ -29,29 +29,18 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        if let granted = result.grantedPermissions {
-            print("halooo")
-            print(granted)
-        }
-        else if let declined = result.declinedPermissions {
-            print(declined)
-        }
-        else if result.isCancelled {
-            print(result.isCancelled)
-        }
+        
         if error == nil {
-            print("Login complete.")
             loginButton.hidden = true
             self.performSegueWithIdentifier("unwindLoginSegue", sender: self)
         }
         else {
-            print("halo")
-            print(error)
+            // Error
         }
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("User logged out...")
+        // Logged in
     }
     
     

@@ -82,7 +82,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         if firstTimeCheck {
             if !didFinishLaunchingOnce() {
                 showInstructions(self)
-                print("Yeah")
             }
             firstTimeCheck = false
         }
@@ -123,7 +122,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     @IBAction func toAddProduct(sender: AnyObject) {
-        print("fuck")
         loadingView.hidden = false
         loadingIndicator.startAnimating()
         lastCapturedCode = "\(arc4random_uniform(892357235))"
@@ -191,7 +189,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             input = nil
         }
         if (error != nil) {
-            print("\(error?.localizedDescription)")
+            // Error
             return
         }
         
@@ -237,7 +235,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                     })
                 }
                 else {
-                    print(error!)
+                    // Error
                 }
                 
             }
@@ -252,7 +250,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 }
             }
             else {
-                print("Wierd Situation")
+                // Wierd Situation
             }
         }
     }

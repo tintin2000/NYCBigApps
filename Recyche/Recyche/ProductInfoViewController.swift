@@ -29,7 +29,6 @@ class ProductInfoViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("loading")
         for code in recycleCodes {
             if code == scannedProduct.valueForKey("material") as! String {
                 recycleInstructionsTextView.text! = instructionForCode(code)
@@ -84,7 +83,7 @@ class ProductInfoViewController: UIViewController {
             try managedObjectContext.save()
         }
         catch _ {
-            print("Error?")
+            // Error
         }
     }
 

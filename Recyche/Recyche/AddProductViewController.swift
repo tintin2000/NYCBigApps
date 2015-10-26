@@ -20,6 +20,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet var instructionsView: UIView!
+    @IBOutlet weak var boxView: UIView!
 
     let naMessage = "The Product information is not in our database. Please 'SELECT PRODUCT MATERIAL' below and add it."
     let naProduct = "Product Name Not Available"
@@ -90,11 +91,9 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.loadingActivityIndicator.stopAnimating()
                     self.loadingView.hidden = true
-                    print(error)
                 })
             }
             else {
-                print(record?.recordID.recordName)
                 self.newProduct = record
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.loadingActivityIndicator.stopAnimating()
@@ -134,9 +133,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
             
             if let data = response.data {
                 let json = JSON(data: data)
-                print(json)
                 if let _name = json["0"]["productname"].string {
-                    print(_name)
                     if _name == " " {
                         self.productNameLabel.text = self.naProduct
                     }
@@ -202,6 +199,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         
         return pickerLabel
     }
+    
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
