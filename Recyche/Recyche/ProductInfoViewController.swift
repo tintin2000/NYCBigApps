@@ -55,7 +55,6 @@ class ProductInfoViewController: UIViewController {
         }
         else {
             let code = scannedProduct.valueForKey("material") as! String
-            print(code)
             productImageView.image = UIImage(named: code)
         }
     }
