@@ -10,15 +10,19 @@ import UIKit
 import Alamofire
 import CloudKit
 import CoreData
+import CoreLocation
+
 
 let URLString = "http://www.searchupc.com/handlers/upcsearch.ashx?request_type=3"
 let access_token = "C6D5DA80-A126-4235-A35A-26E73FC64C2F"
 let UPC_code =  "037000088806"
 let UPC = "0892685001003"
 
-class ProductInfoViewController: UIViewController {
+class ProductInfoViewController: UIViewController  {
     
     var scannedProduct: CKRecord!
+    var placemark:  CLPlacemark!
+     let cityToFind = ["New York", "Los Angeles" , "San Francisco"]
     
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
@@ -29,9 +33,22 @@ class ProductInfoViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+       
+        
         for code in recycleCodes {
             if code == scannedProduct.valueForKey("material") as! String {
-                recycleInstructionsTextView.text! = instructionForCode(code)
+    
+                if let city = placemark.locality {
+                    if cityToFind.contains(city) {
+                      recycleInstructionsTextView.text! = instructionForCode(code)
+                    } else {
+                      recycleInstructionsTextView.text! = instructionForCodeUknown(code)
+                    }
+
+                    
+                }
+                
             }
         }
         
@@ -62,7 +79,9 @@ class ProductInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(placemark)
         addToPersonalDatabase(scannedProduct)
+       
     }
     
     @IBAction func toScanner(sender: AnyObject) {
@@ -86,6 +105,8 @@ class ProductInfoViewController: UIViewController {
             // Error
         }
     }
+    
+   
 
 }
 

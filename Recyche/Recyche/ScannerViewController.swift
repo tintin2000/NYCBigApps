@@ -11,8 +11,9 @@ import AVFoundation
 import FBSDKCoreKit
 import FBSDKLoginKit
 import CloudKit
+import CoreLocation
 
-class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate ,CLLocationManagerDelegate {
 
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
@@ -22,6 +23,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var scannedProduct: CKRecord!
     var barcodeScanned:((String) ->())?
     var firstTimeCheck = false
+    
+       let locationManager = CLLocationManager()
+    var placemark: CLPlacemark!
     
     @IBOutlet weak var videoView:UIView!
     @IBOutlet weak var instructionBanner: UILabel!
@@ -56,6 +60,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         loadingView.hidden = true
         loadingView.frame = view.frame
         UIApplication.sharedApplication().keyWindow?.addSubview(loadingView)
+        initializeLocationManager()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -113,6 +118,38 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             print("Unknown orientation state")
         }
     }
+    
+    // MARK: - Location
+    
+    func initializeLocationManager() {
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        locationManager.stopUpdatingLocation()
+        guard let currentLocation = locations.first else
+        {
+            
+            return
+        }
+        CLGeocoder().reverseGeocodeLocation(currentLocation) { (placemarks, error) -> Void in
+            guard let _placemark = placemarks?.first else
+            {
+                
+                return
+            }
+            self.placemark = _placemark
+            print(self.placemark.locality)
+            
+        }
+        
+    }
+
     
     // MARK: - Actions
     
@@ -334,6 +371,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         else if segue.identifier == "toProductInfoSegue" {
             let productInfoViewController = segue.destinationViewController as! ProductInfoViewController
             productInfoViewController.scannedProduct = scannedProduct
+            productInfoViewController.placemark = placemark
         }
     }
 

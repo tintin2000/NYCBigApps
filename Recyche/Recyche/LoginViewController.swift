@@ -10,7 +10,10 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate  {
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.center = CGPoint(x: view.center.x, y: view.center.y + 100)
         loginButton.delegate = self
         self.view.addSubview(loginButton)
+        
+        
         
     }
     
