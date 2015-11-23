@@ -22,7 +22,7 @@ class ProductInfoViewController: UIViewController  {
     
     var scannedProduct: CKRecord!
     var placemark:  CLPlacemark!
-     let cityToFind = ["New York", "Los Angeles" , "San Francisco"]
+     let cityToFind = ["New York", "Los Angeles" , "San Francisco" , "Atlanta"]
     
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
