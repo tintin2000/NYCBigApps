@@ -25,7 +25,7 @@
 		FA1BAECF1BAF160600D24788 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAECE1BAF160600D24788 /* AddProductViewController.swift */; };
 		FA1BAED31BAF163400D24788 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED21BAF163400D24788 /* ChartsViewController.swift */; };
 		FA1BAED51BAF164B00D24788 /* ListOfProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */; };
-		FA65B85A1BD87510002E6312 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA65B8591BD87510002E6312 /* CloudKit.framework */; };
+		FA5D809E1C0CB1340047080F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5D809D1C0CB1340047080F /* CloudKit.framework */; };
 		FABC01021BC6DE0800B3048A /* RecycleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABC01011BC6DE0800B3048A /* RecycleInformation.swift */; };
 		FABD2D821BCB37AB003C5464 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD2D811BCB37AA003C5464 /* ProductTableViewCell.swift */; };
 		FAE29D851BBB6412003325DA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE29D841BBB6412003325DA /* LoginViewController.swift */; };
@@ -69,7 +69,7 @@
 		FA1BAED21BAF163400D24788 /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfProductsViewController.swift; sourceTree = "<group>"; };
 		FA4184BA1BBED5EE00F70AA2 /* Recyche.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Recyche.entitlements; sourceTree = "<group>"; };
-		FA65B8591BD87510002E6312 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		FA5D809D1C0CB1340047080F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FABC01011BC6DE0800B3048A /* RecycleInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecycleInformation.swift; sourceTree = "<group>"; };
 		FABD2D811BCB37AA003C5464 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		FAE29D841BBB6412003325DA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D32DACF01BE5F3F4AC707997 /* Pods_Recyche.framework in Frameworks */,
-				FA65B85A1BD87510002E6312 /* CloudKit.framework in Frameworks */,
+				FA5D809E1C0CB1340047080F /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +100,7 @@
 		0B8B1D01E3FB503623910908 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FA65B8591BD87510002E6312 /* CloudKit.framework */,
+				FA5D809D1C0CB1340047080F /* CloudKit.framework */,
 				4EDDAC981BD020D90025C09B /* Social.framework */,
 				D98569438C1359D2C195A1AD /* Pods_Recyche.framework */,
 			);
@@ -213,7 +213,7 @@
 				TargetAttributes = {
 					7CCEA00C1BADB48A00F6D423 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 36C7Q24PMU;
+						DevelopmentTeam = 96HG6E2WJ6;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -438,7 +438,7 @@
 				INFOPLIST_FILE = Recyche/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.recyche;
+				PRODUCT_BUNDLE_IDENTIFIER = com.recyche.Recyche;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -461,7 +461,7 @@
 				INFOPLIST_FILE = Recyche/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.recyche;
+				PRODUCT_BUNDLE_IDENTIFIER = com.recyche.Recyche;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

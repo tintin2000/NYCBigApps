@@ -227,7 +227,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         publicData.fetchRecordWithID(CKRecordID(recordName: upc)) { (record, error) -> Void in
             if error != nil {
-                if error!.userInfo["ServerErrorDescription"]! as! String == "Record not found" {
+                if error!.userInfo["ServerErrorDescription"] as! String == "Record not found" {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.performSegueWithIdentifier("toAddProductSegue", sender: self)
                         self.loadingIndicator.stopAnimating()
