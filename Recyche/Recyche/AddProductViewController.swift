@@ -50,8 +50,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     
     self.boxView.layer.borderWidth = 2
     self.boxView.layer.borderColor = UIColor(red:0.08, green:0.47, blue:0.24, alpha:1.0).CGColor
-    
-    
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -71,6 +69,9 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     
     let container = CKContainer.defaultContainer()
     let publicData = container.publicCloudDatabase
+    
+    let productToVerify = CKRecord(recordType: "Verification", recordID: CKRecordID(recordName: "\(scannedUPC)_\(material)"))
+    productToVerify.setValue(NSUserDefaults.standardUserDefaults().valueForKey("id") as! String, forKey: "user1")
     
     let product = CKRecord(recordType: "Product", recordID: CKRecordID(recordName: scannedUPC))
     product.setValue(material, forKey: "material")
@@ -106,7 +107,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
           self.performSegueWithIdentifier("addToInfoSegue", sender: self)
         })
       }
-      
     }
   }
   
