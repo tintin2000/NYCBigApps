@@ -64,50 +64,49 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
   
   @IBAction func addProductToDatabase(sender: AnyObject) {
     
-    loadingView.hidden = false
-    loadingActivityIndicator.startAnimating()
+    Verification().checkForExistingUpcMaterial(scannedUPC + "_" + material)
     
-    let container = CKContainer.defaultContainer()
-    let publicData = container.publicCloudDatabase
-    
-    let productToVerify = CKRecord(recordType: "Verification", recordID: CKRecordID(recordName: "\(scannedUPC)_\(material)"))
-    productToVerify.setValue(NSUserDefaults.standardUserDefaults().valueForKey("id") as! String, forKey: "user1")
-    
-    let product = CKRecord(recordType: "Product", recordID: CKRecordID(recordName: scannedUPC))
-    product.setValue(material, forKey: "material")
-    if let nm = name {
-      product.setValue(nm, forKey: "name")
-    }
-    else {
-      product.setValue("Unknown", forKey: "name")
-    }
-    
-    if let _ = imageURL {
-      let imageData = UIImageJPEGRepresentation(productImageView.image!, 1)
-      let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-      let fileURL = documentsURL.URLByAppendingPathComponent("imageasset")
-      imageData?.writeToURL(fileURL, atomically: true)
-      
-      let asset = CKAsset(fileURL: fileURL)
-      product.setValue(asset, forKey: "image")
-    }
-    
-    publicData.saveRecord(product) { (record, error) -> Void in
-      if error != nil {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-          self.loadingActivityIndicator.stopAnimating()
-          self.loadingView.hidden = true
-        })
-      }
-      else {
-        self.newProduct = record
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-          self.loadingActivityIndicator.stopAnimating()
-          self.loadingView.hidden = true
-          self.performSegueWithIdentifier("addToInfoSegue", sender: self)
-        })
-      }
-    }
+//    loadingView.hidden = false
+//    loadingActivityIndicator.startAnimating()
+//    
+//    let container = CKContainer.defaultContainer()
+//    let publicData = container.publicCloudDatabase
+//    
+//    let product = CKRecord(recordType: "Product", recordID: CKRecordID(recordName: scannedUPC))
+//    product.setValue(material, forKey: "material")
+//    if let nm = name {
+//      product.setValue(nm, forKey: "name")
+//    }
+//    else {
+//      product.setValue("Unknown", forKey: "name")
+//    }
+//    
+//    if let _ = imageURL {
+//      let imageData = UIImageJPEGRepresentation(productImageView.image!, 1)
+//      let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+//      let fileURL = documentsURL.URLByAppendingPathComponent("imageasset")
+//      imageData?.writeToURL(fileURL, atomically: true)
+//      
+//      let asset = CKAsset(fileURL: fileURL)
+//      product.setValue(asset, forKey: "image")
+//    }
+//    
+//    publicData.saveRecord(product) { (record, error) -> Void in
+//      if error != nil {
+//        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//          self.loadingActivityIndicator.stopAnimating()
+//          self.loadingView.hidden = true
+//        })
+//      }
+//      else {
+//        self.newProduct = record
+//        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//          self.loadingActivityIndicator.stopAnimating()
+//          self.loadingView.hidden = true
+//          self.performSegueWithIdentifier("addToInfoSegue", sender: self)
+//        })
+//      }
+//    }
   }
   
   @IBAction func showInstructions(sender: AnyObject) {

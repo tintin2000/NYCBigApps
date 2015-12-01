@@ -468,6 +468,9 @@
                                         <state key="normal" title="ADD PRODUCT TO DATABASE">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addProductToDatabase:" destination="LNm-kN-zp5" eventType="touchUpInside" id="4ON-KQ-cke"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <animations/>
