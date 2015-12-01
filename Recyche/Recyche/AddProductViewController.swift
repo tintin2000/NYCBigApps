@@ -29,6 +29,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
   var newProduct: CKRecord!
   var name: String?
   var imageURL: String?
+  let verification = Verification()
   
   // MARK: - UIViewController Stuff
   
@@ -50,6 +51,8 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     
     self.boxView.layer.borderWidth = 2
     self.boxView.layer.borderColor = UIColor(red:0.08, green:0.47, blue:0.24, alpha:1.0).CGColor
+    
+    verification.delegate = self
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -62,9 +65,10 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
   
   // MARK: - Actions
   
+  
   @IBAction func addProductToDatabase(sender: AnyObject) {
     
-    Verification().checkForExistingUpcMaterial(scannedUPC + "_" + material)
+    Verification().checkForExistingUpcMaterial(scannedUPC, material: material)
     
 //    loadingView.hidden = false
 //    loadingActivityIndicator.startAnimating()
@@ -232,6 +236,13 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
       let productInfoViewController = segue.destinationViewController as! ProductInfoViewController
       productInfoViewController.scannedProduct = newProduct
     }
+  }
+}
+
+extension AddProductViewController: VerificationDelegate {
+  func goAhead(record: CKRecord) {
+    newProduct = record
+    performSegueWithIdentifier("addToInfoSegue", sender: self)
   }
 }
 
