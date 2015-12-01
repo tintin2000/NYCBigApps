@@ -52,7 +52,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     self.boxView.layer.borderWidth = 2
     self.boxView.layer.borderColor = UIColor(red:0.08, green:0.47, blue:0.24, alpha:1.0).CGColor
     
-    verification.delegate = self
+    
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -67,12 +67,12 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
   
   
   @IBAction func addProductToDatabase(sender: AnyObject) {
-    
-    Verification().checkForExistingUpcMaterial(scannedUPC, material: material)
+    verification.delegate = self
+    verification.checkForExistingUpcMaterial(scannedUPC, material: material)
     
 //    loadingView.hidden = false
 //    loadingActivityIndicator.startAnimating()
-//    
+//
 //    let container = CKContainer.defaultContainer()
 //    let publicData = container.publicCloudDatabase
 //    
@@ -242,7 +242,11 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
 extension AddProductViewController: VerificationDelegate {
   func goAhead(record: CKRecord) {
     newProduct = record
-    performSegueWithIdentifier("addToInfoSegue", sender: self)
+    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+      self.loadingView.hidden = true
+      self.loadingActivityIndicator.stopAnimating()
+      self.performSegueWithIdentifier("addToInfoSegue", sender: self)
+    }
   }
 }
 

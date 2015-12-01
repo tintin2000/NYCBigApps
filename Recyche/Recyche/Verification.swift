@@ -35,6 +35,7 @@ class Verification {
               }
               else {
                 print("Record Saved")
+                self.newProduct(upc, material: material, save: false)
               }
             }
           }
@@ -48,7 +49,8 @@ class Verification {
         if let record = record, user1 = record.valueForKey("user1") as? String {
           if let user2 = record.valueForKey("user2") as? String {
             if user2 != NSUserDefaults.standardUserDefaults().valueForKey("id") as! String {
-              self.newProduct(upc, material: material)
+              print("Verified")
+              self.newProduct(upc, material: material, save: true)
             }
           } else {
             if user1 != NSUserDefaults.standardUserDefaults().valueForKey("id") as! String {
@@ -58,6 +60,7 @@ class Verification {
                 }
                 else {
                   print("Added user2")
+                  self.newProduct(upc, material: material, save: false)
                 }
               }
             }
@@ -70,7 +73,7 @@ class Verification {
     }
   }
   
-  func newProduct(upc: String, material:String) {
+  func newProduct(upc: String, material:String, save: Bool) {
     var name: String!
     var imageURL: String?
     Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": upc]).responseJSON { response in
@@ -118,16 +121,23 @@ class Verification {
       let asset = CKAsset(fileURL: fileURL)
       product.setValue(asset, forKey: "image")
     }
-    
-    publicData.saveRecord(product) { (record, error) -> Void in
-      if error != nil {
-        print(error?.localizedDescription)
-      }
-      else {
-        print("Saved Product")
-        if let delegate = self.delegate {
-          delegate.goAhead(product)
+    if save {
+      publicData.saveRecord(product) { (record, error) -> Void in
+        if error != nil {
+          print(error?.localizedDescription)
         }
+        else {
+          print("Saved Product")
+          if let delegate = self.delegate {
+            delegate.goAhead(product)
+          }
+        }
+      }
+    } else {
+      print("ja")
+      if let delegate = self.delegate {
+        print("ja?")
+        delegate.goAhead(product)
       }
     }
   }
