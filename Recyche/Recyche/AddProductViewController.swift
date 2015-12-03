@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import CloudKit
+import CoreLocation
 
 class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
@@ -29,6 +30,9 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     var newProduct: CKRecord!
     var name: String?
     var imageURL: String?
+    
+    var placemark:  CLPlacemark!
+
     
     // MARK: - UIViewController Stuff
     
@@ -61,7 +65,9 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         super.viewDidAppear(animated)
         
         if !didFinishLaunchingOnce() {
-            showInstructions(self)
+             showInstructions(self)
+            
+           
         }
     }
     
@@ -235,6 +241,8 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         if segue.identifier == "addToInfoSegue" {
             let productInfoViewController = segue.destinationViewController as! ProductInfoViewController
             productInfoViewController.scannedProduct = newProduct
+            productInfoViewController.placemark = placemark
+            
         }
     }
 }

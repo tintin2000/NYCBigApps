@@ -22,7 +22,9 @@ class ProductInfoViewController: UIViewController  {
     
     var scannedProduct: CKRecord!
     var placemark:  CLPlacemark!
-     let cityToFind = ["New York", "Los Angeles" , "San Francisco" , "Atlanta"]
+    
+     let cityToFind = ["Atlanta","Los Angeles", "San Francisco", "New York" ,"San Antonio", "San Diego", "San Jose", "Austin" , "Jacksonville","Columbus","Fort Worth","Charlotte","El Paso","Denver", "Memphis", "Boston", "Nashville", "Oklahoma City", "Portland" ,"Louisville" ,"Albuquerque", "Tucson", "Sacramento" , "Long Beach" , "Kansas City", "Mesa","Minneapolis","Oakland","Miami","Colorado Springs","Omaha","Tulsa", "Cleveland","Wichita", "New Orleans", "Arlington","Bakersfield", "Tampa","Anaheim" ]
+     let cityToFind6 = ["Chicago", "Houston", "Philadelphia", "Phoenix", "Dallas", "Indianapolis", " Washington DC", "Orlando"]
     
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
@@ -40,9 +42,13 @@ class ProductInfoViewController: UIViewController  {
             if code == scannedProduct.valueForKey("material") as! String {
     
                 if let city = placemark.locality {
-                    if cityToFind.contains(city) {
+                    if cityToFind.contains(city)
+                    {
                       recycleInstructionsTextView.text! = instructionForCode(code)
-                    } else {
+                    } else if cityToFind6.contains(city){
+                       recycleInstructionsTextView.text! = instructionForCode6(code)
+                    }
+                    else {
                       recycleInstructionsTextView.text! = instructionForCodeUknown(code)
                     }
 
@@ -79,7 +85,7 @@ class ProductInfoViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(placemark)
+       
         addToPersonalDatabase(scannedProduct)
        
     }

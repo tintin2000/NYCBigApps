@@ -367,6 +367,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         if segue.identifier == "toAddProductSegue" {
             let addProductViewController = segue.destinationViewController as! AddProductViewController
             addProductViewController.scannedUPC = lastCapturedCode
+            addProductViewController.placemark = placemark
+           
+            
+        
         }
         else if segue.identifier == "toProductInfoSegue" {
             let productInfoViewController = segue.destinationViewController as! ProductInfoViewController
