@@ -16,7 +16,7 @@ let city = info_placemark?.locality
 let recycleCodeUnknown = ["paper": "Please Check Local Recycling Rules to Determine if this type of material is recyclable","paper book cover": "Please Check Local Recycling Rules to Determine if this type of material is recyclable.", "newsprint": "Please Check Local Recycling Rules to Determine if this type of material is recyclable.", "cardboard": "Please Check Local Recycling Rules to Determine if this type of material is recyclable.", "glass": "Please Check Local Recycling Rules to Determine if this type of material is recyclable", "plastic": "Please Check Local Recycling Rules to Determine if this type of material is recyclable.", "carton": "Please Check Local Recycling Rules to Determine if this type of material is recyclable", "metal": "Please Check Local Recycling Rules to Determine if this type of material is recyclable"]
 let recycleCodesInfo = ["paper": "Put paper in your recycling bag or bin.\r\r  Recycle according to \(city!) recycling instructions in properly colored and labeled receptacles.","paper book cover": "Put newspapers, magazines & catalogs with other paper. \r Recycle according to \(city!) recycling instructions in properly colored and labeled receptacles.", "newsprint": "Put newspapers, magazines & catalogs with other paper. \r Recycle according to \(city!) recycling instructions in properly colored and labeled receptacles.", "cardboard": "Flatten and tie large corrugated boxes, or break them into small pieces. \r\r  Recycle according to \(city!) recycling instructions in properly colored and labeled receptacles.", "glass": "Rinse and place with your glass, metal and plastic recyclables.\r\r  Recycle according to \(city!) recycling instructions in properly colored and labeled receptacles.", "plastic": "Rinse and place with your glass, metal and plastic recyclables. \r  Recycle according to \(city!) recycling instructions in properly colored and labeled receptacles.", "carton": "Rinse and place with your glass, metal and plastic recyclables.", "metal": "Rinse and place with your glass, metal and plastic recyclables. \r\r  Recycle according to \(city!) recycling instructions in properly colored and labeled receptacles.","plastic6": "This plastic type is not accepted for Recycling.\r  Please dispose according to  \(city!) waste instructions."]
 
-let recycleCodes = ["SELECT PRODUCT MATERIAL", "PETE 1", "HDPE 2", "PVC 3", "LDPE 4", "PP 5", "PS 6", "SHELF-STABLE CARTON", "REFRIGERATED CARTON", "GLASS GREEN", "GLASS CLEAR", "GLASS BROWN", "PAPER", "CARDBOARD", "NEWSPRINT", "PAPER BACK BOOK", "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS"]
+let recycleCodes = ["SELECT PRODUCT MATERIAL", "PETE 1", "HDPE 2", "PVC 3", "LDPE 4", "PP 5", "PS 6", "SHELF-STABLE CARTON", "REFRIGERATED CARTON", "GLASS GREEN", "GLASS CLEAR", "GLASS BROWN", "PAPER", "CARDBOARD BOX", "NEWSPRINT", "PAPER BACK BOOK", "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS"]
 
 func materialForCode(code: String) -> String {
     
@@ -30,7 +30,7 @@ func materialForCode(code: String) -> String {
         return "GLASS"
     case  "PAPER", "PAPER BACK BOOK", "NEWSPRINT":
         return "PAPER"
-    case  "CARDBOARD":
+    case  "CARDBOARD BOX":
         return "CARDBOARD"
     case  "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS":
         return "METAL"
@@ -52,7 +52,7 @@ func colorForCode(code: String) -> UIColor {
         return colorWithHexString("CFDE4E")
     case  "PAPER", "PAPER BACK BOOK", "NEWSPRINT":
         return colorWithHexString("D8914F")
-    case  "CARDBOARD":
+    case  "CARDBOARD BOX":
         return colorWithHexString("D8914F")
     case  "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS", "METAL":
         return colorWithHexString("E486B7")
@@ -75,7 +75,7 @@ func instructionForCode(code: String) -> String {
         return recycleCodesInfo["glass"]!
     case  "PAPER", "PAPER BACK BOOK", "NEWSPRINT":
         return recycleCodesInfo["paper"]!
-    case  "CARDBOARD":
+    case  "CARDBOARD BOX":
         return recycleCodesInfo["cardboard"]!
     case  "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS":
         return recycleCodesInfo["metal"]!
@@ -96,7 +96,7 @@ func instructionForCode6(code: String) -> String {
         return recycleCodesInfo["glass"]!
     case  "PAPER", "PAPER BACK BOOK", "NEWSPRINT":
         return recycleCodesInfo["paper"]!
-    case  "CARDBOARD":
+    case  "CARDBOARD BOX":
         return recycleCodesInfo["cardboard"]!
     case  "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS":
         return recycleCodesInfo["metal"]!
@@ -118,7 +118,7 @@ func instructionForCodeUknown(code: String) -> String {
         return recycleCodeUnknown["glass"]!
     case  "PAPER", "PAPER BACK BOOK", "NEWSPRINT":
         return recycleCodeUnknown["paper"]!
-    case  "CARDBOARD":
+    case  "CARDBOARD BOX":
         return recycleCodeUnknown["cardboard"]!
     case  "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS":
         return recycleCodeUnknown["metal"]!
