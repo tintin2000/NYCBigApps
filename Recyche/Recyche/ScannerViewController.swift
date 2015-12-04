@@ -145,6 +145,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             }
             self.placemark = _placemark
             print(self.placemark.locality)
+            info_placemark = _placemark
             
         }
         
