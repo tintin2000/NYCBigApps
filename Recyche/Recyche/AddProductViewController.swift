@@ -240,6 +240,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
 }
 
 extension AddProductViewController: VerificationDelegate {
+  
   func goAhead(record: CKRecord) {
     newProduct = record
     dispatch_async(dispatch_get_main_queue()) { () -> Void in
@@ -247,6 +248,15 @@ extension AddProductViewController: VerificationDelegate {
       self.loadingActivityIndicator.stopAnimating()
       self.performSegueWithIdentifier("addToInfoSegue", sender: self)
     }
+  }
+  
+  func dismissAddingNewItem() {
+    let alertController = UIAlertController(title: "Waiting for verification", message: "Product was alredy added under this type of material code, it will get veirified once 3 unique user add it with the same material code", preferredStyle: .Alert)
+    let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: { (action) -> Void in
+      self.navigationController?.popViewControllerAnimated(true)
+    })
+    alertController.addAction(okayAction)
+    self.presentViewController(alertController, animated: true, completion: nil)
   }
 }
 

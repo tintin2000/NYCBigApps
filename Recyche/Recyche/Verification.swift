@@ -13,6 +13,7 @@ import SwiftyJSON
 
 protocol VerificationDelegate {
   func goAhead(record: CKRecord)
+  func dismissAddingNewItem()
 }
 
 class Verification {
@@ -47,13 +48,18 @@ class Verification {
       }
       else if record != nil {
         if let record = record, user1 = record.valueForKey("user1") as? String {
+          print("1")
           if let user2 = record.valueForKey("user2") as? String {
+            print("2")
             if user2 != NSUserDefaults.standardUserDefaults().valueForKey("id") as! String {
               print("Verified")
               self.newProduct(upc, material: material, save: true)
+            } else {
+              self.delegate?.dismissAddingNewItem()
             }
           } else {
             if user1 != NSUserDefaults.standardUserDefaults().valueForKey("id") as! String {
+              print("3")
               publicData.saveRecord(record) { (record, error) -> Void in
                 if error != nil {
                   print(error?.localizedDescription)
@@ -63,12 +69,15 @@ class Verification {
                   self.newProduct(upc, material: material, save: false)
                 }
               }
+            } else {
+              self.delegate?.dismissAddingNewItem()
             }
           }
         }
       }
       else {
         // Wierd Situation
+        print("Wierd")
       }
     }
   }
