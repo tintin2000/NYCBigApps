@@ -23,9 +23,7 @@ class ProductInfoViewController: UIViewController  {
     var scannedProduct: CKRecord!
     var placemark:  CLPlacemark!
     
-     let cityToFind = ["Atlanta","Los Angeles", "San Francisco", "New York" ,"San Antonio", "San Diego", "San Jose", "Austin" , "Jacksonville","Columbus","Fort Worth","Charlotte","El Paso","Denver", "Memphis", "Boston", "Nashville", "Oklahoma City", "Portland" ,"Louisville" ,"Albuquerque", "Tucson", "Sacramento" , "Long Beach" , "Kansas City", "Mesa","Minneapolis","Oakland","Miami","Colorado Springs","Omaha","Tulsa", "Cleveland","Wichita", "New Orleans", "Arlington","Bakersfield", "Tampa","Anaheim" ]
-     let cityToFind6 = ["Chicago", "Houston", "Philadelphia", "Phoenix", "Dallas", "Indianapolis", " Washington DC", "Orlando"]
-    
+         
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productNameDetail: UILabel!
@@ -39,21 +37,41 @@ class ProductInfoViewController: UIViewController  {
        
         
         for code in recycleCodes {
+            
             if code == scannedProduct.valueForKey("material") as! String {
-    
-                if let city = placemark.locality {
-                    if cityToFind.contains(city)
-                    {
-                      recycleInstructionsTextView.text! = instructionForCode(code)
-                    } else if cityToFind6.contains(city){
-                       recycleInstructionsTextView.text! = instructionForCode6(code)
-                    }
-                    else {
-                      recycleInstructionsTextView.text! = instructionForCodeUknown(code)
-                    }
-
-                    
-                }
+                
+                
+                let defaults = NSUserDefaults.standardUserDefaults()
+               let city  = defaults.objectForKey("cityInfoCopy")!
+                print(city)
+                
+//                if city = ["city1"]
+//                {
+//                   recycleInstructionsTextView.text! = instructionForCode(code)
+//                } else if city = ["city6"]  {
+//                    
+//                    recycleInstructionsTextView.text! = instructionForCode6(code)
+//                    
+//                } else if city  = ["city0"] {
+//                    
+//                    recycleInstructionsTextView.text! = instructionForCodeUknown(code)
+//                }
+//    
+                
+                
+//                if let city = placemark.locality {
+//                    if cityToFind.contains(city)
+//                    {
+//
+//                    } else if cityToFind6.contains(city){
+//                       recycleInstructionsTextView.text! = instructionForCode6(code)
+//                    }
+//                    else {
+//                      recycleInstructionsTextView.text! = instructionForCodeUknown(code)
+//                    }
+//
+//                    
+//                }
                 
             }
         }

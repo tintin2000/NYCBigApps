@@ -61,6 +61,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         loadingView.frame = view.frame
         UIApplication.sharedApplication().keyWindow?.addSubview(loadingView)
         initializeLocationManager()
+  
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -132,6 +134,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         locationManager.stopUpdatingLocation()
+        
         guard let currentLocation = locations.first else
         {
             
@@ -144,16 +147,46 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 return
             }
             self.placemark = _placemark
-            print(self.placemark.locality)
+      
             info_placemark = _placemark
             
+            
+            
+            if  let cityInfo = self.placemark.locality{
+                
+                var cityInfoCopy: String
+                
+                if cityToFind.contains(cityInfo)
+                {
+                    
+                    cityInfoCopy = "city1"
+                    
+                }  else if cityToFind6.contains(cityInfo){
+                    
+                    cityInfoCopy =  "city6"
+                    
+                } else {
+                    
+                    cityInfoCopy =  "city0"
+                }
+                
+                let defaults = NSUserDefaults.standardUserDefaults()
+                defaults.setObject(cityInfoCopy, forKey: "cityInfoCopy")
+                defaults.setObject(self.placemark.locality, forKey: "city")
+                
+                
+            }
+           
         }
         
     }
+ 
+    
 
-    
+
+
     // MARK: - Actions
-    
+
     @IBAction func toProductDetail(sender: AnyObject) {
         lastCapturedCode = "0123456789012"
         databaseCheck(lastCapturedCode!)
