@@ -154,27 +154,28 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             
             if  let cityInfo = self.placemark.locality{
                 
-                var cityInfoCopy: String
+                var cityInfoCopy: Int
                 
                 if cityToFind.contains(cityInfo)
                 {
                     
-                    cityInfoCopy = "city1"
+                    cityInfoCopy = 1
                     
                 }  else if cityToFind6.contains(cityInfo){
                     
-                    cityInfoCopy =  "city6"
+                    cityInfoCopy =  6
                     
                 } else {
                     
-                    cityInfoCopy =  "city0"
+                    cityInfoCopy =  0
                 }
                 
                 let defaults = NSUserDefaults.standardUserDefaults()
-                defaults.setObject(cityInfoCopy, forKey: "cityInfoCopy")
-                defaults.setObject(self.placemark.locality, forKey: "city")
+               defaults.setInteger(cityInfoCopy, forKey: "cityInfoCopy")
+               defaults.setObject(self.placemark.locality, forKey: "userCity")
+            
                 
-                
+                print(cityInfoCopy)
             }
            
         }

@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 var info_placemark: CLPlacemark!
-let city = info_placemark?.locality
+let city = NSUserDefaults.standardUserDefaults().objectForKey("userCity")
 
 let cityToFind = [  "New York","Atlanta","Los Angeles", "San Francisco" ,"San Antonio", "San Diego", "San Jose", "Austin" , "Jacksonville","Columbus","Fort Worth","Charlotte","El Paso","Denver", "Memphis", "Boston", "Nashville", "Oklahoma City", "Portland" ,"Louisville" ,"Albuquerque", "Tucson", "Sacramento" , "Long Beach" , "Kansas City", "Mesa","Minneapolis","Oakland","Miami","Colorado Springs","Omaha","Tulsa", "Cleveland","Wichita", "New Orleans", "Arlington","Bakersfield", "Tampa","Anaheim" ,"Santa Ana" ,"Corpus Christi" ,"Stockton" ,"Cincinnati"]
 let cityToFind6 = [ "Chicago", "Houston", "Philadelphia", "Phoenix", "Dallas", "Indianapolis", " Washington DC", "Orlando" ,"St. Louis" , "Pittsburgh"]

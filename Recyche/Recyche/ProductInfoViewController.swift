@@ -39,24 +39,22 @@ class ProductInfoViewController: UIViewController  {
         for code in recycleCodes {
             
             if code == scannedProduct.valueForKey("material") as! String {
+
+                let city  = NSUserDefaults.standardUserDefaults().integerForKey("cityInfoCopy")
                 
-                
-                let defaults = NSUserDefaults.standardUserDefaults()
-               let city  = defaults.objectForKey("cityInfoCopy")!
                 print(city)
-                
-//                if city = ["city1"]
-//                {
-//                   recycleInstructionsTextView.text! = instructionForCode(code)
-//                } else if city = ["city6"]  {
-//                    
-//                    recycleInstructionsTextView.text! = instructionForCode6(code)
-//                    
-//                } else if city  = ["city0"] {
-//                    
-//                    recycleInstructionsTextView.text! = instructionForCodeUknown(code)
-//                }
-//    
+            
+                if city == 1
+                {
+                   recycleInstructionsTextView.text! = instructionForCode(code)
+                } else if city == 6  {
+                    
+                    recycleInstructionsTextView.text! = instructionForCode6(code)
+                    
+                } else if city  == 0 {
+                    
+                    recycleInstructionsTextView.text! = instructionForCodeUknown(code)
+                }
                 
                 
 //                if let city = placemark.locality {
