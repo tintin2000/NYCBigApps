@@ -158,6 +158,8 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
           if verifyUrl(_imageURL) {
             self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: _imageURL)!)!)
             self.imageURL = _imageURL
+          } else {
+            self.imageURL = "http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png"
           }
         }
         self.loadingActivityIndicator.stopAnimating()
@@ -251,12 +253,20 @@ extension AddProductViewController: VerificationDelegate {
   }
   
   func dismissAddingNewItem() {
-    let alertController = UIAlertController(title: "Waiting for verification", message: "Product was alredy added under this type of material code, it will get veirified once 3 unique user add it with the same material code", preferredStyle: .Alert)
-    let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: { (action) -> Void in
-      self.navigationController?.popViewControllerAnimated(true)
-    })
-    alertController.addAction(okayAction)
-    self.presentViewController(alertController, animated: true, completion: nil)
+    let fakeRecord = CKRecord(recordType: "Product")
+    fakeRecord.setValue(material, forKey: "material")
+    fakeRecord.setValue(name!, forKey: "name")
+    let imageData = NSData(contentsOfURL: NSURL(string: imageURL!)!)
+    let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+    let fileURL = documentsURL.URLByAppendingPathComponent("imageasset")
+    imageData?.writeToURL(fileURL, atomically: true)
+    
+    let asset = CKAsset(fileURL: fileURL)
+    fakeRecord.setValue(asset, forKey: "image")
+    newProduct = fakeRecord
+    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+      self.performSegueWithIdentifier("addToInfoSegue", sender: self)
+    }
   }
 }
 
