@@ -144,6 +144,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         if let _name = json["0"]["productname"].string {
           if _name == " " {
             self.productNameLabel.text = self.naProduct
+            self.name = "Unknown"
           }
           else {
             self.productNameLabel.text = _name
@@ -152,6 +153,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         }
         else {
           self.productNameLabel.text = self.naProduct
+          self.name = "Unknown"
         }
         
         if let _imageURL = json["0"]["imageurl"].string {
