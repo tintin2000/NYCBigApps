@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4EA5523E1C25BED7003B31BD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA5523D1C25BED7003B31BD /* CoreLocation.framework */; };
 		7CCEA0111BADB48A00F6D423 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCEA0101BADB48A00F6D423 /* AppDelegate.swift */; };
 		7CCEA0191BADB48A00F6D423 /* Recyche.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CCEA0171BADB48A00F6D423 /* Recyche.xcdatamodeld */; };
 		7CCEA01B1BADB48A00F6D423 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CCEA01A1BADB48A00F6D423 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		1C5515FE0A6026B30DA139C9 /* Pods-Recyche.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recyche.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recyche/Pods-Recyche.debug.xcconfig"; sourceTree = "<group>"; };
 		34AFD1111DBC5CD6A402D18E /* Pods-Recyche.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recyche.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recyche/Pods-Recyche.release.xcconfig"; sourceTree = "<group>"; };
+		4EA5523D1C25BED7003B31BD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4EDDAC981BD020D90025C09B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		7CCEA00D1BADB48A00F6D423 /* Recyche.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recyche.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCEA0101BADB48A00F6D423 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EA5523E1C25BED7003B31BD /* CoreLocation.framework in Frameworks */,
 				D32DACF01BE5F3F4AC707997 /* Pods_Recyche.framework in Frameworks */,
 				FA5D809E1C0CB1340047080F /* CloudKit.framework in Frameworks */,
 			);
@@ -102,6 +105,7 @@
 		0B8B1D01E3FB503623910908 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4EA5523D1C25BED7003B31BD /* CoreLocation.framework */,
 				FA5D809D1C0CB1340047080F /* CloudKit.framework */,
 				4EDDAC981BD020D90025C09B /* Social.framework */,
 				D98569438C1359D2C195A1AD /* Pods_Recyche.framework */,
@@ -216,7 +220,7 @@
 				TargetAttributes = {
 					7CCEA00C1BADB48A00F6D423 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 96HG6E2WJ6;
+						DevelopmentTeam = 36C7Q24PMU;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -442,7 +446,7 @@
 				INFOPLIST_FILE = Recyche/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.recyche.Recyche;
+				PRODUCT_BUNDLE_IDENTIFIER = com.recyche;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -465,7 +469,7 @@
 				INFOPLIST_FILE = Recyche/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.recyche.Recyche;
+				PRODUCT_BUNDLE_IDENTIFIER = com.recyche;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

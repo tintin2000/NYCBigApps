@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import CloudKit
 import CoreData
+import CoreLocation
 
 let URLString = "http://www.searchupc.com/handlers/upcsearch.ashx?request_type=3"
 let access_token = "C6D5DA80-A126-4235-A35A-26E73FC64C2F"
@@ -30,9 +31,26 @@ class ProductInfoViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         for code in recycleCodes {
-            if code == scannedProduct.valueForKey("material") as! String {
-                recycleInstructionsTextView.text! = instructionForCode(code)
-            }
+            
+            if code == scannedProduct.valueForKey("material") as! String{
+                
+                let city  = NSUserDefaults.standardUserDefaults().integerForKey("cityInfoCopy")
+                
+                print(city)
+                
+                if city == 1
+                {
+                    recycleInstructionsTextView.text! = instructionForCode(code)
+                } else if city == 6  {
+                    
+                    recycleInstructionsTextView.text! = instructionForCode6(code)
+                    
+                } else if city  == 0 {
+                    
+                    recycleInstructionsTextView.text! = instructionForCodeUknown(code)
+                }
+
+        }
         }
         
         if let name = scannedProduct.valueForKey("name") as? String {

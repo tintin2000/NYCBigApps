@@ -8,8 +8,13 @@
 
 import UIKit
 
-let recycleCodesInfo = ["paper": "Put paper in your recycling bag or bin—no need to bundle and tie.\r\r  Recycle according to building management instructions in properly colored and labeled receptacles.","paper book cover": "Put newspapers, magazines & catalogs with other paper in your recycling bag no need to bundle and tie. \r Recycle according to building management instructions in properly colored and labeled receptacles.", "newsprint": "Put newspapers, magazines & catalogs with other paper in your recycling bag need to bundle and tie. \r\r Recycle according to building management instructions in properly colored and labeled receptacles.", "cardboard": "Flatten and tie large corrugated boxes, or break them into small pieces. \r\r  Recycle according to building management instructions in properly colored and labeled receptacles.", "glass": "Rinse and place with your glass, metal and plastic recyclables.\r\r  Recycle according to building management instructions in properly colored and labeled receptacles.", "plastic": "Rinse and place with your glass, metal and plastic recyclables. \r  Recycle according to building management instructions in properly colored and labeled receptacles.", "carton": "Rinse and place with your glass, metal and plastic recyclables.", "metal": "Rinse and place with your glass, metal and plastic recyclables. \r\r  Recycle according to building management instructions in properly colored and labeled receptacles."]
+let city = NSUserDefaults.standardUserDefaults().objectForKey("userCity")
 
+let cityToFind = [  "New York","Atlanta","Los Angeles", "San Francisco" ,"San Antonio", "San Diego", "San Jose", "Austin" , "Jacksonville","Columbus","Fort Worth","Charlotte","El Paso","Denver", "Memphis", "Boston", "Nashville", "Oklahoma City", "Portland" ,"Louisville" ,"Albuquerque", "Tucson", "Sacramento" , "Long Beach" , "Kansas City", "Mesa","Minneapolis","Oakland","Miami","Colorado Springs","Omaha","Tulsa", "Cleveland","Wichita", "New Orleans", "Arlington","Bakersfield", "Tampa","Anaheim" ,"Santa Ana" ,"Corpus Christi" ,"Stockton" ,"Cincinnati"]
+let cityToFind6 = [ "Chicago", "Houston", "Philadelphia", "Phoenix", "Dallas", "Indianapolis", " Washington DC", "Orlando" ,"St. Louis" , "Pittsburgh"]
+
+let recycleCodeUnknown = ["paper": "Please Check Local Recycling Rules to Determine if this type of material is recyclable","paper book cover": "Please Check Local Recycling Rules to Determine if this type of material is recyclable.", "newsprint": "Please Check Local Recycling Rules to Determine if this type of material is recyclable.", "cardboard": "Please Check Local Recycling Rules to Determine if this type of material is recyclable.", "glass": "Please Check Local Recycling Rules to Determine if this type of material is recyclable", "plastic": "Please Check Local Recycling Rules to Determine if this type of material is recyclable.", "carton": "Please Check Local Recycling Rules to Determine if this type of material is recyclable", "metal": "Please Check Local Recycling Rules to Determine if this type of material is recyclable"]
+let recycleCodesInfo = ["paper": "Put paper in your recycling bag or bin.\r\r  Recycle according to \(city!) recycling instructions in properly colored and labeled receptacles.","paper book cover": "Put newspapers, magazines & catalogs with other paper. \r Recycle according to \(city!) recycling instructions in properly colored and labeled receptacles.", "newsprint": "Put newspapers, magazines & catalogs with other paper. \r Recycle according to \(city!) recycling instructions in properly colored and labeled receptacles.", "cardboard": "Flatten and tie large corrugated boxes, or break them into small pieces. \r\r  Recycle according to \(city!) recycling instructions in properly colored and labeled receptacles.", "glass": "Rinse and place with your glass, metal and plastic recyclables.\r\r  Recycle according to \(city!) recycling instructions in properly colored and labeled receptacles.", "plastic": "Rinse and place with your glass, metal and plastic recyclables. \r  Recycle according to\(city!) recycling instructions in properly colored and labeled receptacles.", "carton": "Rinse and place with your glass, metal and plastic recyclables.", "metal": "Rinse and place with your glass, metal and plastic recyclables. \r\r  Recycle according to \(city!) recycling instructions in properly colored and labeled receptacles.","plastic6": "This plastic type is not accepted for Recycling.\r  Please dispose according to \(city!) waste instructions."]
 let recycleCodes = ["SELECT PRODUCT MATERIAL", "PETE 1", "HDPE 2", "PVC 3", "LDPE 4", "PP 5", "PS 6", "SHELF-STABLE CARTON", "REFRIGERATED CARTON", "GLASS GREEN", "GLASS CLEAR", "GLASS BROWN", "PAPER", "CARDBOARD", "NEWSPRINT", "PAPER BACK BOOK", "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS"]
 
 func materialForCode(code: String) -> String {
@@ -69,6 +74,47 @@ func instructionForCode(code: String) -> String {
         return "nothing"
     }
 }
+
+func instructionForCode6(code: String) -> String {
+    switch code {
+    case  "PETE 1", "HDPE 2", "PVC 3", "LDPE 4", "PP 5":
+        return recycleCodesInfo["plastic"]!
+    case  "PS 6":
+        return recycleCodesInfo["plastic6"]!
+    case  "SHELF-STABLE CARTON", "REFRIGERATED CARTON":
+        return recycleCodesInfo["carton"]!
+    case  "GLASS GREEN", "GLASS CLEAR", "GLASS BROWN":
+        return recycleCodesInfo["glass"]!
+    case  "PAPER", "PAPER BACK BOOK", "NEWSPRINT":
+        return recycleCodesInfo["paper"]!
+    case  "CARDBOARD BOX":
+        return recycleCodesInfo["cardboard"]!
+    case  "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS":
+        return recycleCodesInfo["metal"]!
+    default:
+        return "nothing"
+    }
+}
+
+func instructionForCodeUknown(code: String) -> String {
+    switch code {
+    case  "PETE 1", "HDPE 2", "PVC 3", "LDPE 4", "PP 5", "PS 6":
+        return recycleCodeUnknown["plastic"]!
+    case  "SHELF-STABLE CARTON", "REFRIGERATED CARTON":
+        return recycleCodeUnknown["carton"]!
+    case  "GLASS GREEN", "GLASS CLEAR", "GLASS BROWN":
+        return recycleCodeUnknown["glass"]!
+    case  "PAPER", "PAPER BACK BOOK", "NEWSPRINT":
+        return recycleCodeUnknown["paper"]!
+    case  "CARDBOARD BOX":
+        return recycleCodeUnknown["cardboard"]!
+    case  "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS":
+        return recycleCodeUnknown["metal"]!
+    default:
+        return "nothing"
+    }
+}
+
 
 func colorWithHexString (hex:String) -> UIColor {
     var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
