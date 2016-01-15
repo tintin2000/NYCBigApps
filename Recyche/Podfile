@@ -4,11 +4,11 @@
 target 'Recyche' do
 use_frameworks!
 
-pod 'Alamofire', '~> 3.0'
+pod 'Alamofire', '~> 3.1’
 pod 'SwiftyJSON', '~> 2.3'
-pod 'FBSDKCoreKit', '~> 4.7'
-pod 'FBSDKLoginKit', '~> 4.7'
-pod 'FBSDKShareKit', '~> 4.7'
+pod 'FBSDKCoreKit', '~> 4.8’
+pod 'FBSDKLoginKit', '~> 4.8’
+pod 'FBSDKShareKit', '~> 4.8’
 pod 'Charts', '~> 2.1'
 
 end
